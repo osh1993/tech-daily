@@ -7,9 +7,9 @@ import { Footer } from '@/components/layout/Footer';
 import { ArticleSchema, BreadcrumbSchema } from '@/components/seo/JsonLd';
 
 interface NewsPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 async function getNewsById(id: string): Promise<News | null> {
@@ -40,7 +40,8 @@ async function getNewsById(id: string): Promise<News | null> {
 }
 
 export async function generateMetadata({ params }: NewsPageProps): Promise<Metadata> {
-  const news = await getNewsById(params.id);
+  const { id } = await params;
+  const news = await getNewsById(id);
 
   if (!news) {
     return {
@@ -69,14 +70,15 @@ export async function generateMetadata({ params }: NewsPageProps): Promise<Metad
 }
 
 export default async function NewsPage({ params }: NewsPageProps) {
-  const news = await getNewsById(params.id);
+  const { id } = await params;
+  const news = await getNewsById(id);
 
   if (!news) {
     notFound();
   }
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-  const newsUrl = `${baseUrl}/news/${params.id}`;
+  const newsUrl = `${baseUrl}/news/${id}`;
 
   return (
     <div className="min-h-screen bg-background">
