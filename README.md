@@ -4,6 +4,7 @@
 
 Tech Daily는 TechCrunch, The Verge, GeekNews 등 주요 기술 매체의 RSS 피드를 실시간으로 수집하여 제공하는 현대적인 뉴스 애그리게이터입니다.
 
+[![GitHub](https://img.shields.io/badge/GitHub-osh1993%2Ftech--daily-181717?style=flat-square&logo=github)](https://github.com/osh1993/tech-daily)
 [![Next.js](https://img.shields.io/badge/Next.js-16.0-black?style=flat-square&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.2-blue?style=flat-square&logo=react)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
@@ -72,7 +73,7 @@ Tech Daily는 TechCrunch, The Verge, GeekNews 등 주요 기술 매체의 RSS �
 
 ```bash
 # 저장소 클론
-git clone https://github.com/your-username/tech-daily.git
+git clone https://github.com/osh1993/tech-daily.git
 cd tech-daily
 
 # 의존성 설치
