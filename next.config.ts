@@ -12,7 +12,6 @@ const withPWA = withPWAInit({
   cacheOnFrontEndNav: true,
   aggressiveFrontEndNavCaching: true,
   reloadOnOnline: true,
-  swcMinify: true,
   disable: process.env.NODE_ENV === 'development',
   workboxOptions: {
     disableDevLogs: true,
@@ -20,6 +19,9 @@ const withPWA = withPWAInit({
 });
 
 const nextConfig: NextConfig = {
+  // Turbopack 설정 (Next.js 16+)
+  turbopack: {},
+
   // 이미지 최적화 설정
   images: {
     // 외부 이미지 도메인 허용
@@ -40,12 +42,6 @@ const nextConfig: NextConfig = {
     // 디바이스 크기별 이미지 사이즈
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-  },
-
-  // 실험적 기능
-  experimental: {
-    // Turbopack 최적화
-    turbo: {},
   },
 
   // 번들 최적화

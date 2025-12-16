@@ -1,5 +1,8 @@
 import { MetadataRoute } from 'next';
 
+// 1시간마다 재생성 (ISR)
+export const revalidate = 3600;
+
 /**
  * 동적 사이트맵 생성
  *
@@ -33,7 +36,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // 동적 뉴스 페이지 (최근 100개)
   try {
     const response = await fetch(`${baseUrl}/api/feeds?limit=100`, {
-      cache: 'no-store',
+      next: { revalidate: 3600 },
     });
 
     if (response.ok) {

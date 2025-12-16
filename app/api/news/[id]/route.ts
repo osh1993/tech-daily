@@ -7,14 +7,14 @@ import { getFromCache, setToCache, getNewsCacheKey, getFeedCacheKey } from '@/li
  * GET /api/news/[id]
  * 특정 뉴스의 상세 정보 조회
  *
- * @param params - { id: string } 뉴스 ID
+ * @param params - Promise<{ id: string }> 뉴스 ID (Next.js 16+)
  */
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params;
+    const { id } = await params;
 
     if (!id) {
       return NextResponse.json(

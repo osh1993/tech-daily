@@ -39,17 +39,20 @@ export async function parseFeed(feedConfig: RSSFeedConfig): Promise<News[]> {
         favicon: `https://www.google.com/s2/favicons?domain=${new URL(feedConfig.url).hostname}`,
       };
 
+      // RSS item을 any로 타입 단언 (동적 필드 접근)
+      const rssItem = item as any;
+
       // News 객체 생성
       const news: News = {
         id: nanoid(),
         title: item.title || '제목 없음',
         description: cleanDescription(item.contentSnippet || item.description || ''),
-        content: item['content:encoded'] || item.content || item.description,
+        content: rssItem['content:encoded'] || item.content || item.description,
         link: item.link || '',
         pubDate: item.pubDate ? new Date(item.pubDate) : new Date(),
         source,
         thumbnail,
-        author: item.creator || item.author || undefined,
+        author: rssItem.creator || rssItem.author || undefined,
         category: item.categories || [feedConfig.category],
       };
 
