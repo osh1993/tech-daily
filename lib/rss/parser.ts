@@ -1,5 +1,5 @@
 import Parser from 'rss-parser';
-import { nanoid } from 'nanoid';
+import { createHash } from 'crypto';
 import { News, NewsSource, RSSFeedConfig } from '@/lib/types/news';
 
 // RSS 파서 인스턴스 생성
@@ -42,9 +42,15 @@ export async function parseFeed(feedConfig: RSSFeedConfig): Promise<News[]> {
       // RSS item을 any로 타입 단언 (동적 필드 접근)
       const rssItem = item as any;
 
+      // 링크 기반 고유 ID 생성 (일관성 유지)
+      const newsId = createHash('md5')
+        .update(item.link || '')
+        .digest('base64url')
+        .substring(0, 16);
+
       // News 객체 생성
       const news: News = {
-        id: nanoid(),
+        id: newsId,
         title: item.title || '제목 없음',
         description: cleanDescription(item.contentSnippet || item.description || ''),
         content: rssItem['content:encoded'] || item.content || item.description,
