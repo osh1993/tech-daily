@@ -1,0 +1,52 @@
+{
+  "name": "Tech Daily - 기술 뉴스 애그리게이터",
+  "short_name": "Tech Daily",
+  "description": "한국과 해외의 최신 기술 뉴스를 한 곳에서 확인하세요",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["news", "productivity", "technology"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "검색",
+      "short_name": "검색",
+      "description": "뉴스 검색",
+      "url": "/search",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "북마크",
+      "short_name": "북마크",
+      "description": "저장한 뉴스",
+      "url": "/bookmarks",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
